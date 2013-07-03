@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>External Login</title>
+
+    <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function Login() {
+            var iframe = document.getElementById('iLog').contentWindow;
+            var data = "Login|" + $("#user").val() + "," + $("#password").val();
+            iframe.postMessage(data, "*")
+
+            return false;
+        }
+    </script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+         <input type="text" ID="user" runat="server" />
+        <br />
+        <input type="password" ID="password" />
+        <br />
+        <input type="button" onclick="javascript: Login();" value="Log In" />
+   
+        <br /><br />
+
+        <iframe id="iLog" src="http://preseleccion.tecmilenio.edu.mx/LoginSAP/Login.aspx" width="300px" height="150px"></iframe>
+        <!--http://localhost:52354/Login.aspx-->
+    </div>
+    </form>
+</body>
+</html>
